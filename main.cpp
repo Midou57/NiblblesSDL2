@@ -51,10 +51,11 @@ int main(int argc, char** argv){
     //creation de map
 
     //erreur je n'ai pas encore trouvé la solution
- /*   for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 100; i++)
     {
-        obs.emplace_back(rand()%100*10, rand()%100*10, 10, 10);
-    }*/
+       // obs.emplace_back(rand()%100*10, rand()%100*10, 10, 10);
+        obs.push_back({rand()%100*10, rand()%100*10, 10, 10});
+    }
     
  
     bool running = true;
