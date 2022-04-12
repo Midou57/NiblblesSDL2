@@ -8,6 +8,8 @@
 #define SCREEN_WIDTH 1280 
 #define SCREEN_HEIGHT 720
 
+#define reserve 150
+
 int main(int argc, char** argv){
 
 
@@ -51,10 +53,10 @@ int main(int argc, char** argv){
     //creation de map
 
     //erreur je n'ai pas encore trouvé la solution
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < reserve; i++)
     {
        // obs.emplace_back(rand()%100*10, rand()%100*10, 10, 10);
-        obs.push_back({rand()%100*10, rand()%100*10, 10, 10});
+        obs.push_back({rand()%128*10, rand()%100*10, 10, 10});
     }
     
  
@@ -109,6 +111,16 @@ int main(int argc, char** argv){
         std::for_each(rq.begin(), rq.end(), [&](auto& nibble_seg ){
             if(head.x == nibble_seg.x && head.y == nibble_seg.y)
                 size = 1;
+            // si il dépasse les dimensions de l'ecran     
+            if(head.x > SCREEN_WIDTH )
+                head.x=0; 
+            if(head.x < 0)
+                head.x=SCREEN_WIDTH;
+            if(head.y > SCREEN_HEIGHT)
+                head.y=0;
+            if(head.y < 0)
+                head.y=SCREEN_HEIGHT;            
+
         });
 
         // on ajoute un nouveau head à nibble
